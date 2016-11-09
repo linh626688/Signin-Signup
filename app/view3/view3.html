@@ -1,0 +1,29 @@
+
+    <script src="view3.js"></script>
+    <div ng-controller="AppCtrl">
+        <form name="addContactForm">
+            <label><b>Title:</b> <i>{{newTitle}}</i></label>
+            <input ng-model="newTitle" type="text" required>
+
+            <label><b>Full Name:</b> <i>{{newFullName}}</i></label>
+            <input ng-model="newFullName" type="text" required>
+
+            <label><b>Dollar Amount:</b> <i>{{newDollarAmount}}</i></label>
+            <input ng-model="newDollarAmount" type="text" required>
+
+            <label><b>Description:</b> <i>{{newDescription}}</i></label>
+            <textarea ng-model="newDescription" required></textarea>
+
+            <a ng-click="addContact()">&darr; Add to List</a>
+            <p class="warning">{{failed}}</p>
+        </form>
+
+        <ul ng-repeat="contact in contacts" item="item">
+            <li>Id: {{contact.id}}</li>
+            <li>Title: {{contact.title}}</li>
+            <li>Name: {{contact.fullName}}</li>
+            <li>${{contact.dollarAmount}}</li>
+            <li>{{contact.description}}</li>
+            <button ng-click="deleteContact($index, contact)">Delete</button>
+        </ul>
+    </div>
