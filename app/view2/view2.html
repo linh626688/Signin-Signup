@@ -4,26 +4,32 @@
     <form name="registerForm" class="form-signin">
         <h2 class="form-signin-heading">Please sign up</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="username"
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address"
+               ng-model="username"
                required="" autofocus="">
+        <p ng-show="registerForm.email.$invalid "
+           style="color:red">Email is required.</p>
         <br>
         <div>
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" ng-minlength="8" ng-maxlength="25"
+            <input type="password" name="password" id="inputPassword" class="form-control" ng-minlength="8"
+                   ng-maxlength="25"
                    placeholder="Password" ng-model="password" check-password="password"
                    required>
-            <p ng-show="password.$error.minlength" class="help-block" style="color:red">Password is too
+            <p ng-show="registerForm.password.$error.minlength" style="color:red">Password is too
                 short.</p>
-            <p ng-show="password.$invalid && !password.$pristine" class="help-block"
+            <p ng-show="registerForm.password.$invalid "
                style="color:red">Password is required.</p>
-            <p ng-show="password.$error.numberValidator" class="help-block" style="color:red">Password must
+            <p ng-show="registerForm.password.$error.numberValidator" style="color:red">Password must
                 have a number</p>
-            <p ng-show="password.$error.uppercaseValidator" class="help-block" style="color:red">
+            <p ng-show="registerForm.password.$error.uppercaseValidator" style="color:red">
                 Password must have an uppercase</p>
 
         </div>
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="addUser()">Sign up</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="addUser()" ng-disabled="checkInValid()">
+            Sign up
+        </button>
     </form>
 
 </div>

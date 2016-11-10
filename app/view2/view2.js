@@ -22,11 +22,7 @@ angular.module('myApp.view2', ['ngRoute'])
                     } else {
                         ctrl.$setValidity('numberValidator', false);
                     }
-                    if (ngModelValue.length === 8) {
-                        ctrl.$setValidity('eightCharactersValidator', true);
-                    } else {
-                        ctrl.$setValidity('eightCharactersValidator', false);
-                    }
+                    console.log(ngModelValue);
                     return ngModelValue;
                 }
 
@@ -57,6 +53,14 @@ angular.module('myApp.view2', ['ngRoute'])
             else {
                 $scope.failed = 'All fields must be filled.';
             }
+
+        }
+        $scope.checkInValid = function () {
+            if ($scope.registerForm.email.$invalid ||
+                $scope.registerForm.password.$invalid) {
+                return true;
+            }
+            return false;
 
         }
 
